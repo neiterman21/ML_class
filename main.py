@@ -3,21 +3,21 @@
 
 # HC Data H_k:
 """
-(1, 'p1_distance') Empirical error: 0.5501538461538462 True error: 0.5495384615384618
-(1, 'p2_distance') Empirical error: 0.5480000000000002 True error: 0.5464615384615389
-(1, 'p_inf_distance') Empirical error: 0.5486153846153847 True error: 0.5464615384615388
-(3, 'p1_distance') Empirical error: 0.5507692307692311 True error: 0.5650769230769233
-(3, 'p2_distance') Empirical error: 0.5527692307692312 True error: 0.5650769230769231
-(3, 'p_inf_distance') Empirical error: 0.5504615384615391 True error: 0.563846153846154
-(5, 'p1_distance') Empirical error: 0.5506153846153854 True error: 0.5544615384615387
-(5, 'p2_distance') Empirical error: 0.5501538461538464 True error: 0.5579999999999999
-(5, 'p_inf_distance') Empirical error: 0.5490769230769236 True error: 0.5598461538461542
-(7, 'p1_distance') Empirical error: 0.5421538461538465 True error: 0.5526153846153848
-(7, 'p2_distance') Empirical error: 0.5447692307692311 True error: 0.5490769230769235
-(7, 'p_inf_distance') Empirical error: 0.5483076923076928 True error: 0.5460000000000003
-(9, 'p1_distance') Empirical error: 0.5469230769230773 True error: 0.5490769230769237
-(9, 'p2_distance') Empirical error: 0.5460000000000005 True error: 0.5449230769230771
-(9, 'p_inf_distance') Empirical error: 0.5441538461538468 True error: 0.5438461538461542
+(1, 'p1_distance') Empirical error: 0.9713846153846143 True error: 0.5543076923076925
+(1, 'p2_distance') Empirical error: 0.9712307692307681 True error: 0.5515384615384619
+(1, 'p_inf_distance') Empirical error: 0.9713846153846143 True error: 0.5513846153846156
+(3, 'p1_distance') Empirical error: 0.7772307692307691 True error: 0.571538461538462
+(3, 'p2_distance') Empirical error: 0.7710769230769227 True error: 0.5693846153846157
+(3, 'p_inf_distance') Empirical error: 0.7666153846153844 True error: 0.5643076923076926
+(5, 'p1_distance') Empirical error: 0.7221538461538458 True error: 0.5530769230769235
+(5, 'p2_distance') Empirical error: 0.7176923076923074 True error: 0.5530769230769235
+(5, 'p_inf_distance') Empirical error: 0.7092307692307692 True error: 0.5543076923076928
+(7, 'p1_distance') Empirical error: 0.6896923076923075 True error: 0.5480000000000004
+(7, 'p2_distance') Empirical error: 0.6895384615384614 True error: 0.5484615384615386
+(7, 'p_inf_distance') Empirical error: 0.6801538461538459 True error: 0.5480000000000004
+(9, 'p1_distance') Empirical error: 0.6638461538461539 True error: 0.5509230769230773
+(9, 'p2_distance') Empirical error: 0.6633846153846154 True error: 0.5492307692307695
+(9, 'p_inf_distance') Empirical error: 0.6598461538461539 True error: 0.5449230769230771
 """
 
 
@@ -67,7 +67,7 @@ def run_single_experiment(data,labels,seed):
             true_error.append(error_df.value_counts(normalize=True).iloc[0])
             #empirical error
             result_df = train_data.apply(lambda row: classify(row, train_data, train_labels,p, k), axis=1)
-            error_df = result_df == test_labels
+            error_df = result_df == train_labels
             emp_error.append(error_df.value_counts(normalize=True).iloc[0])
            # print( "emp: k = " + str(k) , "p= " + p.__name__ , "acc= ", error_df.value_counts(normalize=True).iloc[0])
    
