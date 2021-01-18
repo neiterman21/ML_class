@@ -10,7 +10,7 @@ def p2_distance(input_data, training_set):
     distance_diff = distance_diff**2
     return distance_diff.sum(axis=1)**0.5
 
-def p2_inf_distance(input_data, training_set):
+def p_inf_distance(input_data, training_set):
     distance_diff = training_set.sub( input_data,  axis='columns')
     distance_diff = distance_diff.abs()
     return distance_diff.max(axis=1)
@@ -25,4 +25,5 @@ def classify(input_data, training_set, labels, distance_func ,k=1):
 
 if __name__ == "__main__":
     df , labels = readData.hbt_data('HC_Body_Temperature.txt')
-    print(classify(pd.Series(df.tail(1).reset_index(drop=True).iloc[0]),df.head(65),labels.head(65),p2_inf_distance,k=5) )
+    print(labels)
+    print(classify(pd.Series(df.tail(1).reset_index(drop=True).iloc[0]),df.head(65),labels.head(65),p_inf_distance,k=5) )
